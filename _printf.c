@@ -5,39 +5,41 @@
  * Return: number of characters printed
 */
 
- int _printf(const char *format, ...)
+int _printf(const char *format, ...)
  {
-     int i;
-     /*int retlen;*/
-     va_list arg;
-     int len;
-     len = strlen(format);
-     /*retlen = 0;*/
-     va_start(arg, format);
+	int i, len = 0;
+	unsigned int n;
+	char *s;
 
-     for (i = 0; format[i] != '\0'; i++)
-     {
-         while (format[i] != '%')
-         {
-             putchar(format[i]);
-            i++;
+	va_list arg;
 
+	va_start(arg, format);
+
+	for (i = 0; format[i] != '\0'; i++)
+	{
+		while (format[i] != '%' && format[i] != '\0')
+		{
+			putchar(format[i]);
+			len++;
+			i++;
         }
-         i++;
+		i++;
 
+		switch(format[i])
+		{
+			case 'c':
+				n = va_arg(arg,int);
+				putchar(n);
+				len++;
+				break;
+			case 's':
+				s = va_arg(arg,char *);
+				puts(s);
+				len += strlen(s);
+				break;
+		}
+	}
+	va_end(arg);
 
-             switch(format[i])
-         {
-             case 'c':
-                 putchar(va_arg(arg,int));
-                 break;
-             case 's':
-                 puts(va_arg(arg,char *));
-                 break;
-         }
-
-
-     }
-     va_end(arg);
-     return (len);
+	return (len);
 }
