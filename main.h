@@ -8,5 +8,6 @@
 #include <stddef.h>
 
 int _printf(const char *format, ...);
+char *negative(unsigned int num);
 
 #endif
