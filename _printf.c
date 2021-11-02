@@ -43,6 +43,10 @@ int _printf(const char *format, ...)
 				puts(s);
 				len += strlen(s);
 				break;
+			case '%':
+				putchar(format[i]);
+				len++;
+				break;
 			default:
 				break;
 		}
