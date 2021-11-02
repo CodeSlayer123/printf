@@ -13,6 +13,7 @@ int _printf(const char *format, ...)
 
 	va_list arg;
 
+
 	va_start(arg, format);
 
 	for (i = 0; format[i] != '\0'; i++)
@@ -42,6 +43,10 @@ int _printf(const char *format, ...)
 				s = va_arg(arg,char *);
 				puts(s);
 				len += strlen(s);
+				break;
+			case '%':
+				putchar(format[i]);
+				len++;
 				break;
 			default:
 				break;
