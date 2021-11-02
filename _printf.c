@@ -5,14 +5,13 @@
  * @format: format specifier
  * Return: number of characters printed
 */
-void my_itoa(int value, std::string& buf, int base);
 int _printf(const char *format, ...)
  {
 	int i, len = 0;
 	unsigned int n;
 	char *s;
+	char tmp[20];
 	va_list arg;
-	char str[30];
 
 	va_start(arg, format);
 	for (i = 0; format[i] != '\0'; i++)
@@ -41,24 +40,12 @@ int _printf(const char *format, ...)
 				len += strlen(s);
 				break;
 			case 'd':
-				n = va_arg(arg, double);
-				if (i < 0)
-				{
-					n = -n;
-					_putchar('-');
-				}
-				itoa (n, str, 10);
-				output(str);
-			   break;
+				s = _itoa(va_arg(arg, int), tmp, 10);
+				output(s);
+				break;
 			case 'i':
-				n = va_arg(arg, double);
-				if (i < 0)
-				{
-					n = -n;
-					_putchar('-');
-				}
-				itoa (n, str, 10);
-				output(str);
+				s = _itoa(va_arg(arg, int), tmp, 10);
+				output(s);
 			   break;
 			case '%':
 				_putchar('%');
