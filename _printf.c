@@ -1,15 +1,18 @@
 #include "main.h"
+
  /**
  * _printf - prints a string according to a format
  * @format: format specifier
  * Return: number of characters printed
 */
+void my_itoa(int value, std::string& buf, int base);
 int _printf(const char *format, ...)
  {
 	int i, len = 0;
 	unsigned int n;
 	char *s;
 	va_list arg;
+	char str[30];
 
 	va_start(arg, format);
 	for (i = 0; format[i] != '\0'; i++)
@@ -44,7 +47,8 @@ int _printf(const char *format, ...)
 					n = -n;
 					_putchar('-');
 				}
-				output(convert(n, 10));
+				itoa (n, str, 10);
+				output(str);
 			   break;
 			case 'i':
 				n = va_arg(arg, double);
@@ -53,7 +57,8 @@ int _printf(const char *format, ...)
 					n = -n;
 					_putchar('-');
 				}
-				output(convert(n, 10));
+				itoa (n, str, 10);
+				output(str);
 			   break;
 			case '%':
 				_putchar('%');
