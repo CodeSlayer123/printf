@@ -10,6 +10,6 @@
 int _putchar(char c);
 void output(char *s);
 int _printf(const char *format, ...);
-char *negative(unsigned int num);
+char *convert(unsigned int num, int base);
 
 #endif
