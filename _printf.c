@@ -23,8 +23,14 @@ int _printf(const char *format, ...)
 			len++;
 			i++;
         }
+		if (format[i] == '\0')
+	{
+		break;
+	}
+		if (format[i] != '\0')
+		{
 		i++;
-
+		}
 		switch(format[i])
 		{
 			case 'c':
@@ -36,6 +42,8 @@ int _printf(const char *format, ...)
 				s = va_arg(arg,char *);
 				puts(s);
 				len += strlen(s);
+				break;
+			default:
 				break;
 		}
 	}
