@@ -1,6 +1,6 @@
 #include "main.h"
 
- /**
+/**
  * _printf - prints a string according to a format
  * @format: format specifier
  * Return: number of characters printed
@@ -34,7 +34,7 @@ int _printf(const char *format, ...)
 				n = va_arg(arg, int);
 					if (n == '\0')
 					{
-						_putchar(' ');
+						break;
 					}
 					else
 					{
