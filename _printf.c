@@ -56,6 +56,10 @@ int _printf(const char *format, ...)
 				break;
 			case 'd':
 				tmp = malloc(sizeof(va_arg(arg, int)));
+				if (tmp == NULL)
+				{
+					return ('\0');
+				}
 				n = va_arg(arg, int);
 				if (n == '\0')
 				{
@@ -67,9 +71,14 @@ int _printf(const char *format, ...)
 				output(s);
 				}
 				len += strlen(s);
+				free (tmp);
 				break;
 			case 'i':
 				tmp = malloc(sizeof(va_arg(arg, int)));
+				if (tmp == NULL)
+				{
+					return ('\0');
+				}
 				n = va_arg(arg, int);
 
 				if (n == '\0')
@@ -82,6 +91,7 @@ int _printf(const char *format, ...)
 				output(s);
 				}
 				len += strlen(s);
+				free (tmp);
 			   break;
 			case '%':
 				_putchar('%');
