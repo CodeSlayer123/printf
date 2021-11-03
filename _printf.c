@@ -8,7 +8,7 @@
 int _printf(const char *format, ...)
 {
 	int i, len = 0;
-	unsigned int n;
+	int n;
 	char *s;
 	char *tmp;
 	va_list arg;
@@ -93,6 +93,46 @@ int _printf(const char *format, ...)
 				len += _strlen(s);
 				free(tmp);
 				break;
+			case 'o':
+				tmp = malloc(sizeof(va_arg(arg, unsigned int)));
+					if (tmp == NULL)
+					{
+						return ('\0');
+					}
+				n = va_arg(arg, unsigned int);
+					if (n == '\0')
+					{
+						_putchar('0');
+					}
+
+					else
+					{
+						s = _itoa(n, tmp, 8);
+						output(s);
+					}
+				len += _strlen(s);
+				free(tmp);
+				break;
+			case 'X':
+				tmp = malloc(sizeof(va_arg(arg, unsigned int)));
+					if (tmp == NULL)
+					{
+						return ('\0');
+					}
+				n = va_arg(arg, int);
+					if (n == '\0')
+					{
+						_putchar('0');
+					}
+					else
+					{
+						s = _itoa(n, tmp, 16);
+						output(s);
+					}
+				len += _strlen(s);
+				free(tmp);
+				break;
+
 			case '%':
 				_putchar('%');
 				len++;
