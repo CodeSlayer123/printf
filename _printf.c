@@ -70,7 +70,7 @@ int _printf(const char *format, ...)
 				s = _itoa(n, tmp, 10);
 				output(s);
 				}
-				len += strlen(s);
+				len += _strlen(s);
 				free (tmp);
 				break;
 			case 'i':
@@ -90,7 +90,7 @@ int _printf(const char *format, ...)
 				s = _itoa(n, tmp, 10);
 				output(s);
 				}
-				len += strlen(s);
+				len += _strlen(s);
 				free (tmp);
 			   break;
 			case '%':
