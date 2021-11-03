@@ -10,10 +10,11 @@ int _printf(const char *format, ...)
 	int i, len = 0;
 	unsigned int n;
 	char *s;
-	char tmp[20];
+	char *tmp;
 	va_list arg;
 
 	va_start(arg, format);
+
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		while (format[i] != '%' && format[i] != '\0')
@@ -40,12 +41,16 @@ int _printf(const char *format, ...)
 				len += strlen(s);
 				break;
 			case 'd':
+				tmp = malloc(sizeof(va_arg(arg, int)));
 				s = _itoa(va_arg(arg, int), tmp, 10);
 				output(s);
+				len += strlen(s);
 				break;
 			case 'i':
+				tmp = malloc(sizeof(va_arg(arg, int)));
 				s = _itoa(va_arg(arg, int), tmp, 10);
 				output(s);
+				len += strlen(s);
 			   break;
 			case '%':
 				_putchar('%');
@@ -54,6 +59,8 @@ int _printf(const char *format, ...)
 			default:
 				_putchar('%');
 				_putchar(format[i]);
+				len++;
+				len++;
 				break;
 		}
 	}
