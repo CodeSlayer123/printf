@@ -32,12 +32,26 @@ int _printf(const char *format, ...)
 		{
 			case 'c':
 				n = va_arg(arg,int);
+				if (n == '\0')
+				{
+					_putchar(' ');
+				}
+				else
+				{
 				_putchar(n);
+				}
 				len++;
 				break;
 			case 's':
 				s = va_arg(arg,char *);
+				if (s == NULL)
+				{
+					output("(null)\n");
+				}
+				else
+				{
 				output(s);
+				}
 				len += strlen(s);
 				break;
 			case 'd':
