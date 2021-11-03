@@ -42,14 +42,31 @@ int _printf(const char *format, ...)
 				break;
 			case 'd':
 				tmp = malloc(sizeof(va_arg(arg, int)));
-				s = _itoa(va_arg(arg, int), tmp, 10);
+				n = va_arg(arg, int);
+				if (n == '\0')
+				{
+					_putchar('0');
+				}
+				else
+				{
+				s = _itoa(n, tmp, 10);
 				output(s);
+				}
 				len += strlen(s);
 				break;
 			case 'i':
 				tmp = malloc(sizeof(va_arg(arg, int)));
-				s = _itoa(va_arg(arg, int), tmp, 10);
+				n = va_arg(arg, int);
+
+				if (n == '\0')
+				{
+					_putchar('0');
+				}
+				else
+				{
+				s = _itoa(n, tmp, 10);
 				output(s);
+				}
 				len += strlen(s);
 			   break;
 			case '%':
