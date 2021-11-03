@@ -47,12 +47,13 @@ int _printf(const char *format, ...)
 					if (s == NULL)
 					{
 						output("(null)\n");
+						len += 7;
 					}
 					else
 					{
 						output(s);
+						len += _strlen(s);
 					}
-				len += strlen(s);
 				break;
 			case 'd':
 				tmp = malloc(sizeof(va_arg(arg, int)));
@@ -64,13 +65,14 @@ int _printf(const char *format, ...)
 					if (n == '\0')
 					{
 						_putchar('0');
+						len++;
 					}
 					else
 					{
 						s = _itoa(n, tmp, 10);
 						output(s);
+						len += _strlen(s);
 					}
-				len += _strlen(s);
 				free(tmp);
 				break;
 			case 'i':
@@ -84,13 +86,14 @@ int _printf(const char *format, ...)
 					if (n == '\0')
 					{
 						_putchar('0');
+						len++;
 					}
 					else
 					{
 						s = _itoa(n, tmp, 10);
 						output(s);
+						len += _strlen(s);
 					}
-				len += _strlen(s);
 				free(tmp);
 				break;
 			case 'o':
@@ -103,14 +106,15 @@ int _printf(const char *format, ...)
 					if (n == '\0')
 					{
 						_putchar('0');
+						len++;
 					}
 
 					else
 					{
 						s = _itoa(n, tmp, 8);
 						output(s);
+						len += _strlen(s);
 					}
-				len += _strlen(s);
 				free(tmp);
 				break;
 			case 'X':
@@ -123,13 +127,14 @@ int _printf(const char *format, ...)
 					if (n == '\0')
 					{
 						_putchar('0');
+						len++;
 					}
 					else
 					{
 						s = _itoa(n, tmp, 16);
 						output(s);
+						len += _strlen(s);
 					}
-				len += _strlen(s);
 				free(tmp);
 				break;
 
