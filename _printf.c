@@ -20,13 +20,9 @@ int _printf(const char *format, ...)
 			i++;
 		}
 		if (format[i] == '\0')
-		{
 			break;
-		}
-		else
-		{
+		if (format[i] != '\0')
 			i++;
-		}
 		switch (format[i])
 		{
 			case 'c':
