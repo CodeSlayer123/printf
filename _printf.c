@@ -27,12 +27,28 @@ int _printf(const char *format, ...)
 		{
 			case 'c':
 				n = va_arg(arg, int);
-				(n == '\0') ? (_putchar(' '), len++) : (putchar(n), len++);
+				if (n == '\0')
+				{
+					_putchar(' ');
+				}
+				else
+				{
+					_putchar(n);
+				}
+				len++;
 				break;
 			case 's':
 				s = va_arg(arg, char *);
-				(s == NULL) ? (output("(null)\n"), len += 6) :
-					(output(s), len += _strlen(s));
+				if (s == NULL)
+				{
+					output("(null)");
+					len += 6;
+			   	}
+				else
+				{
+					output(s);
+					len =+ _strlen(s);
+				}
 				break;
 			case 'd':
 			case 'i':
@@ -40,8 +56,17 @@ int _printf(const char *format, ...)
 				if (tmp == NULL)
 					return ('\0');
 				n = va_arg(arg, int);
-				(n == '\0') ? (_putchar('0'), len++) :
-					(s = _itoa(n, tmp, 10), output(s), len += _strlen(s));
+				if (n == '\0')
+				{
+					_putchar('0');
+					len++;
+				}
+				else
+				{
+					s = _itoa(n, tmp, 10);
+					output(s);
+					len += _strlen(s);
+				}
 				free(tmp);
 				break;
 			case 'o':
@@ -49,8 +74,16 @@ int _printf(const char *format, ...)
 				if (tmp == NULL)
 					return ('\0');
 				n = va_arg(arg, unsigned int);
-				(n == '\0') ? (_putchar('0'), len ++) :
-					(s = _itoa(n, tmp, 8), output(s), len += _strlen(s));
+				if (n == '\0')
+				{
+					_putchar('0');
+					len++;
+				}
+				else
+				{
+					s = _itoa(n, tmp, 8);
+					len += _strlen(s);
+				}
 				free(tmp);
 				break;
 			case 'X':
@@ -58,8 +91,17 @@ int _printf(const char *format, ...)
 				if (tmp == NULL)
 					return ('\0');
 				n = va_arg(arg, int);
-				(n == '\0') ? (_putchar('\0')) :
-					(s = _itoa(n, tmp, 16), output(s), len += _strlen(s));
+				if (n == '\0')
+				{
+					_putchar('0');
+					len++;
+				}
+				else
+				{
+					s = _itoa(n, tmp, 16);
+					output(s);
+					len += _strlen(s);
+				}
 				free(tmp);
 				break;
 			case '%':
