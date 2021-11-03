@@ -6,7 +6,7 @@
  * Return: number of characters printed
 */
 int _printf(const char *format, ...)
- {
+{
 	int i, len = 0;
 	unsigned int n;
 	char *s;
@@ -22,77 +22,77 @@ int _printf(const char *format, ...)
 			_putchar(format[i]);
 			len++;
 			i++;
-        }
+		}
 		if (format[i] == '\0')
 			break;
 		if (format[i] != '\0')
 			i++;
 
-		switch(format[i])
+		switch (format[i])
 		{
 			case 'c':
-				n = va_arg(arg,int);
-				if (n == '\0')
-				{
-					_putchar(' ');
-				}
-				else
-				{
-				_putchar(n);
-				}
+				n = va_arg(arg, int);
+					if (n == '\0')
+					{
+						_putchar(' ');
+					}
+					else
+					{
+						_putchar(n);
+					}
 				len++;
 				break;
 			case 's':
-				s = va_arg(arg,char *);
-				if (s == NULL)
-				{
-					output("(null)\n");
-				}
-				else
-				{
-				output(s);
-				}
+				s = va_arg(arg, char *);
+					if (s == NULL)
+					{
+						output("(null)\n");
+					}
+					else
+					{
+						output(s);
+					}
 				len += strlen(s);
 				break;
 			case 'd':
 				tmp = malloc(sizeof(va_arg(arg, int)));
-				if (tmp == NULL)
-				{
-					return ('\0');
-				}
+					if (tmp == NULL)
+					{
+						return ('\0');
+					}
 				n = va_arg(arg, int);
-				if (n == '\0')
-				{
-					_putchar('0');
-				}
-				else
-				{
-				s = _itoa(n, tmp, 10);
-				output(s);
-				}
+					if (n == '\0')
+					{
+						_putchar('0');
+					}
+					else
+					{
+						s = _itoa(n, tmp, 10);
+						output(s);
+					}
 				len += _strlen(s);
-				free (tmp);
+				free(tmp);
 				break;
 			case 'i':
 				tmp = malloc(sizeof(va_arg(arg, int)));
-				if (tmp == NULL)
-				{
-					return ('\0');
-				}
+					if (tmp == NULL)
+					{
+						return ('\0');
+					}
 				n = va_arg(arg, int);
 
-				if (n == '\0')
-				{
-					_putchar('0');
-				}
-				else
-				{
-				s = _itoa(n, tmp, 10);
-				output(s);
-				}
+					if (n == '\0')
+					{
+						_putchar('0');
+					}
+					else
+					{
+						s = _itoa(n, tmp, 10);
+						output(s);
+					}
 				len += _strlen(s);
-				free (tmp);
-			   break;
+				free(tmp);
+				break;
 			case '%':
 				_putchar('%');
 				len++;
