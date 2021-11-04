@@ -27,6 +27,8 @@ int _printf(const char *format, ...)
 			break;
 		if (format[i] != '\0')
 			i++;
+		if (format[i] == ' ')
+			i++;
 
 		switch (format[i])
 		{
@@ -46,8 +48,8 @@ int _printf(const char *format, ...)
 				s = va_arg(arg, char *);
 					if (s == NULL)
 					{
-						output("(null)\n");
-						len += 7;
+						output("(null)");
+						len += 6;
 					}
 					else
 					{
@@ -123,7 +125,7 @@ int _printf(const char *format, ...)
 					{
 						return ('\0');
 					}
-				n = va_arg(arg, int);
+				n = va_arg(arg, unsigned int);
 					if (n == '\0')
 					{
 						_putchar('0');
@@ -137,7 +139,6 @@ int _printf(const char *format, ...)
 					}
 				free(tmp);
 				break;
-
 			case '%':
 				_putchar('%');
 				len++;
