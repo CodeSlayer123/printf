@@ -45,8 +45,8 @@ int _printf(const char *format, ...)
 					else
 					{
 						_putchar(n);
+						len++
 					}
-				len++;
 				break;
 			case 's':
 				s = va_arg(arg, char *);
