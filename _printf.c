@@ -58,12 +58,12 @@ int _printf(const char *format, ...)
 					}
 				break;
 			case 'd':
-				tmp = malloc(sizeof(va_arg(arg, int)));
+				n = va_arg(arg, int);
+				tmp = malloc(sizeof(n));
 					if (tmp == NULL)
 					{
 						return ('\0');
 					}
-				n = va_arg(arg, int);
 					if (n == '\0')
 					{
 						_putchar('0');
@@ -78,13 +78,12 @@ int _printf(const char *format, ...)
 				free(tmp);
 				break;
 			case 'i':
-				tmp = malloc(sizeof(va_arg(arg, int)));
+				n = va_arg(arg, int);
+				tmp = malloc(sizeof(n));
 					if (tmp == NULL)
 					{
 						return ('\0');
 					}
-				n = va_arg(arg, int);
-
 					if (n == '\0')
 					{
 						_putchar('0');
@@ -99,12 +98,12 @@ int _printf(const char *format, ...)
 				free(tmp);
 				break;
 			case 'o':
-				tmp = malloc(sizeof(va_arg(arg, unsigned int)));
+				n = va_arg(arg, unsigned int);
+				tmp = malloc(sizeof(n));
 					if (tmp == NULL)
 					{
 						return ('\0');
 					}
-				n = va_arg(arg, unsigned int);
 					if (n == '\0')
 					{
 						_putchar('0');
@@ -120,12 +119,12 @@ int _printf(const char *format, ...)
 				free(tmp);
 				break;
 			case 'X':
-				tmp = malloc(sizeof(va_arg(arg, unsigned int)));
+				n = va_arg(arg, unsigned int);
+				tmp = malloc(sizeof(n));
 					if (tmp == NULL)
 					{
 						return ('\0');
 					}
-				n = va_arg(arg, unsigned int);
 					if (n == '\0')
 					{
 						_putchar('0');
