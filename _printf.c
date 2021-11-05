@@ -40,7 +40,7 @@ int _printf(const char *format, ...)
 				n = va_arg(arg, int);
 					if (n == '\0')
 					{
-						break;
+						_putchar('\n');
 					}
 					else
 					{
