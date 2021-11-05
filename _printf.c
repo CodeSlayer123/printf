@@ -13,6 +13,10 @@ int _printf(const char *format, ...)
 	char *tmp;
 	va_list arg;
 
+	if (format == NULL)
+	{
+		exit(98);
+	}
 	va_start(arg, format);
 
 	for (i = 0; format[i] != '\0'; i++)
