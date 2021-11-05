@@ -13,7 +13,7 @@ int _printf(const char *format, ...)
 	char *tmp;
 	va_list arg;
 
-	if (format == NULL || format[0] == '%')
+	if (format == NULL)
 	{
 		exit(98);
 	}
